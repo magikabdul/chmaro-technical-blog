@@ -86,7 +86,7 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <nodeVersion>${node.version}</nodeVersion>
-                            <npmVersion>${npm.version}</npmVersion>
+<!--                            <npmVersion>${npm.version}</npmVersion>-->
                         </configuration>
                     </execution>
 
