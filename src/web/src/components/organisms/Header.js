@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {routes} from "../../routes/routes";
 import {AppBar, Button, makeStyles, Toolbar} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,12 +27,16 @@ export function Header() {
     return(
         <AppBar position={"relative"}>
             <Toolbar className={classes.root}>
-                <Link className={classes.link} to={"/"}>
+                <Link className={classes.link} to={routes.home}>
                     <Button className={classes.menuItem} color={"inherit"}>blog</Button>
                 </Link>
 
-                <Link className={classes.link} to={"/about"}>
+                <Link className={classes.link} to={routes.about}>
                     <Button className={classes.menuItem} color={"inherit"}>about</Button>
+                </Link>
+
+                <Link className={classes.link} to={routes.projects}>
+                    <Button className={classes.menuItem} color={"inherit"}>projects</Button>
                 </Link>
             </Toolbar>
         </AppBar>
