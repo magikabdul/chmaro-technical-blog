@@ -32,7 +32,7 @@ export function ProjectCard({project: {title, description, tags}}) {
     const classes = useStyles();
 
     return (
-        <Box className={classes.root} container>
+        <Box className={classes.root}>
             <Card className={classes.card}>
                 <CardContent>
                     <Typography component="h5" variant="h5">

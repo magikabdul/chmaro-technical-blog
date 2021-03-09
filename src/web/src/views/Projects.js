@@ -15,7 +15,7 @@ export function Projects() {
                 <title>My projects</title>
             </Helmet>
             <Layout>
-                {status === "success" && data.map(project => <ProjectCard key={data.id} project={project}/> )}
+                {status === "success" && data.map(project => <ProjectCard key={project.id} project={project}/> )}
             </Layout>
         </React.Fragment>
     )
