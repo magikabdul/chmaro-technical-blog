@@ -3,11 +3,14 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {ThemeProvider} from '@material-ui/core/styles';
 import {Box, CssBaseline} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles";
+import {QueryClient, QueryClientProvider,} from 'react-query'
 
 import {routes} from "../routes/routes";
 import theme from "../theme/theme";
 import {Footer, Header} from "../components";
 import {About, Home, Projects} from "../views";
+
+const queryClient = new QueryClient();
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,18 +38,19 @@ function App() {
         <React.Fragment>
             <CssBaseline/>
             <ThemeProvider theme={theme}>
-                <Box className={classes.root}>
-                    <BrowserRouter>
-                        <Header/>
-                        <Switch>
-                            <Route path={routes.home} exact component={Home}/>
-                            <Route path={routes.about} exact component={About}/>
-                            <Route path={routes.projects} exact component={Projects}/>
-                        </Switch>
-
-                    </BrowserRouter>
-                    <Footer/>
-                </Box>
+                <QueryClientProvider client={queryClient}>
+                    <Box className={classes.root}>
+                        <BrowserRouter>
+                            <Header/>
+                            <Switch>
+                                <Route path={routes.home} exact component={Home}/>
+                                <Route path={routes.about} exact component={About}/>
+                                <Route path={routes.projects} exact component={Projects}/>
+                            </Switch>
+                        </BrowserRouter>
+                        <Footer/>
+                    </Box>
+                </QueryClientProvider>
             </ThemeProvider>
         </React.Fragment>
     )

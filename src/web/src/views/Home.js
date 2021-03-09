@@ -3,12 +3,12 @@ import Helmet from "react-helmet";
 import {Layout} from "./Layout";
 
 export function Home() {
-    return(
+    return (
         <React.Fragment>
             <Helmet>
                 <title>Blog - recent posts</title>
             </Helmet>
-        <Layout>home view</Layout>
+            <Layout>home view</Layout>
         </React.Fragment>
     )
 }
