@@ -1,16 +1,17 @@
 package cloud.cholewa.blog.project.web;
 
 import cloud.cholewa.blog.project.application.port.ProjectUseCase;
-import cloud.cholewa.blog.project.domain.Tag;
+import cloud.cholewa.blog.project.application.port.ProjectUseCase.CreateProjectCommand;
+import cloud.cholewa.blog.project.domain.Project;
+import cloud.cholewa.blog.web.CreatedURI;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import java.net.URI;
 import java.util.Optional;
 import java.util.Set;
 
@@ -24,24 +25,25 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<?> getAllProjects(@RequestParam Optional<String> title, @RequestParam Optional<String> tag) {
         if (title.isPresent() && tag.isPresent()) {
-            return ResponseEntity.ok(project.findAllProjects());
+            return ResponseEntity.ok(project.findByTitleAndTag(title.get(), tag.get()));
         } else if (title.isPresent()) {
-            return ResponseEntity.ok(project.findAllProjects());
+            return ResponseEntity.ok(project.findByTitle(title.get()));
         } else if (tag.isPresent()) {
-            return ResponseEntity.ok(project.findAllProjects());
+            return ResponseEntity.ok(project.findByTag(tag.get()));
         }
 
-        return ResponseEntity.ok(project.findAllProjects());
+        return ResponseEntity.ok(project.findAll());
     }
 
-    @GetMapping
-    public ResponseEntity<?> getProjectById(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProjectById(@PathVariable Long id) {
         return null;
     }
 
     @PostMapping
     public ResponseEntity<Void> addProject(@Valid @RequestBody RestProjectCommand command) {
-        return null;
+        Project project = this.project.addProject(command.toCreateCommand());
+        return ResponseEntity.created(createProjectURI(project)).build();
     }
 
     @Data
@@ -53,7 +55,14 @@ public class ProjectController {
         @NotBlank
         private String description;
 
-        @NotEmpty
-        private Set<Tag> tags;
+        private Set<String> tags;
+
+        CreateProjectCommand toCreateCommand() {
+            return new CreateProjectCommand(title, description, tags);
+        }
+    }
+
+    private URI createProjectURI(Project project) {
+        return new CreatedURI("/" + project.getId().toString()).uri();
     }
 }

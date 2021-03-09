@@ -1,7 +1,6 @@
 package cloud.cholewa.blog.project.application.port;
 
 import cloud.cholewa.blog.project.domain.Project;
-import cloud.cholewa.blog.project.domain.Tag;
 import lombok.Value;
 
 import java.util.List;
@@ -26,6 +25,6 @@ public interface ProjectUseCase {
     class CreateProjectCommand {
         String title;
         String description;
-        Set<Tag> tags;
+        Set<String> tags;
     }
 }

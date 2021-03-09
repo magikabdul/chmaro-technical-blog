@@ -29,4 +29,10 @@ public class Project extends BaseEntity {
     @JoinTable
     @JsonIgnoreProperties("projects")
     private Set<Tag> tags = new HashSet<>();
+
+    public Project(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.date = LocalDateTime.now();
+    }
 }
