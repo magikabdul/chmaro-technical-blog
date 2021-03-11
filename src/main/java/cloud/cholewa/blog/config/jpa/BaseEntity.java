@@ -1,4 +1,4 @@
-package cloud.cholewa.blog.jpa;
+package cloud.cholewa.blog.config.jpa;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

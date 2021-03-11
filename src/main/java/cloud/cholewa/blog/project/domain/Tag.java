@@ -1,6 +1,6 @@
 package cloud.cholewa.blog.project.domain;
 
-import cloud.cholewa.blog.jpa.BaseEntity;
+import cloud.cholewa.blog.config.jpa.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

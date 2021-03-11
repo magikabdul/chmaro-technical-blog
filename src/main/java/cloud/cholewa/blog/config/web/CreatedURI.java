@@ -1,4 +1,4 @@
-package cloud.cholewa.blog.web;
+package cloud.cholewa.blog.config.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

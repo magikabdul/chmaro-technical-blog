@@ -3,7 +3,7 @@ package cloud.cholewa.blog.project.web;
 import cloud.cholewa.blog.project.application.port.ProjectUseCase;
 import cloud.cholewa.blog.project.application.port.ProjectUseCase.CreateProjectCommand;
 import cloud.cholewa.blog.project.domain.Project;
-import cloud.cholewa.blog.web.CreatedURI;
+import cloud.cholewa.blog.config.web.CreatedURI;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
