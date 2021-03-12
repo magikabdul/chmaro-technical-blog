@@ -24,8 +24,7 @@ public class Article extends BaseEntity {
     @Column(length = 1000)
     private String description;
 
-    @OneToOne
-    private Cover cover;
+    private Long coverId;
 
     @CreatedDate
     private LocalDateTime createdAt;

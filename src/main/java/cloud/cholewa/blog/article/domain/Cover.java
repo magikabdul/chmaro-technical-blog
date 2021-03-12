@@ -19,15 +19,12 @@ import java.time.LocalDateTime;
 @Setter
 public class Cover extends BaseEntity {
 
-    @Column(length = 100000)
+    @Column(length = 1000000)
     private byte[] file;
 
     private String contentType;
 
     private String filename;
-
-    @OneToOne
-    private Article article;
 
     @CreatedDate
     private LocalDateTime createdAt;
