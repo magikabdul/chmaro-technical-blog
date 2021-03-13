@@ -1,8 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {ThemeProvider} from '@material-ui/core/styles';
+import {makeStyles, ThemeProvider} from '@material-ui/core/styles';
 import {Box, CssBaseline} from '@material-ui/core'
-import {makeStyles} from "@material-ui/core/styles";
 import {QueryClient, QueryClientProvider,} from 'react-query'
 
 import {routes} from "../routes/routes";
